@@ -1,4 +1,4 @@
-package main
+package goroutine
 
 import (
 	"fmt"
@@ -29,12 +29,13 @@ import (
 	t.Log(sum)
 }*/
 
-func main() {
+/*func TestMain(m *testing.M) {
 	go spinner(100 * time.Millisecond)
 	const n = 45
 	fibN := fib(n) // slow
 	fmt.Printf("\rFibonacci(%d) = %d\n", n, fibN)
-}
+}*/
+
 func spinner(delay time.Duration) {
 	for {
 		for _, r := range `-\|/` {

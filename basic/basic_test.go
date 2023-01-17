@@ -27,7 +27,12 @@ const (
 	EXECUTABLE             // 1 << 2 is 100
 )
 
+func TestHelloWorld(t *testing.T) {
+	fmt.Println("Hello World")
+}
+
 func TestVars(t *testing.T) {
+
 	var x1 *int
 	t.Logf("%T, %v", x1, x1)
 
@@ -112,38 +117,12 @@ func multiReturn2(a int, b int) (x int, y int) {
 	return
 }
 
-func TestArray(t *testing.T) {
-	arr1 := [3]int{1, 2, 3}
-	for k, v := range arr1 {
-		t.Log("k=", k, ",v=", v)
-	}
-
-	for k := range arr1 {
-		t.Log("k=", k)
-	}
-
-	arr2 := [...]string{"a", "b", "c"}
-	arr2[2] = "d"
-	t.Log(arr2, " len=", len(arr2))
-
-	reverse(&arr2)
-	t.Log(arr2)
-}
-
-// Go语言中的函数参数传递，都是值传递，没有引用传递，slice在函数内部的改变会导致底层数组的改变是因为slice是一个结构体，而结构体里面的数组是一个指针。
-func reverse(arr *[3]string) {
-	for i, j := 0, len(arr)-1; i < j; i, j = i+1, j-1 {
-		arr[i], arr[j] = arr[j], arr[i]
-	}
-	arr[2] = "fff"
-
-}
-
 func TestSlice(t *testing.T) {
 	// 定义
 	var slice1 []int
 	var slice2 = make([]int, 6)
-	t.Log(slice1, len(slice1), slice2, len(slice2))
+	slice31 := []int{1,2,3}
+	t.Log(slice1, len(slice1), slice2, len(slice2), slice31)
 
 	slice1 = append(slice1, 1)
 	slice2[0] = 9
